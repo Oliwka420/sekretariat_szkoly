@@ -7,37 +7,110 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TabControl x:Name="zakladka_menu_glowne" TabStripPlacement="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Comic Sans MS" FontSize="20" SnapsToDevicePixels="True">
-            <TabItem Header="Menu glowne" BorderBrush="#FFFFC1C1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="259*"/>
+            <RowDefinition Height="176*"/>
+        </Grid.RowDefinitions>
+        <TabControl TabStripPlacement="Bottom"  FontFamily="Comic Sans MS" FontSize="20" Grid.RowSpan="2">
+            <TabItem Header="Menu glowne" BorderBrush="#FFFFC1C1" x:Name="zakladka_menu_glowne">
+                <Label Content="poniżej znajdują sie zakładki, umożliwią pokazanie tabel i opcji dodawania" VerticalAlignment="Bottom" Background="#FFFFE9E9"/>
                 <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1">
+                    <LinearGradientBrush>
                         <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FFFFC4C4" Offset="1"/>
+                        <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-
             </TabItem>
             <TabItem x:Name="zakladka_uczniowie" Header="uczniowie" BorderBrush="#FFFFB2B2" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0">Content tabela</Label>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Label Content="imie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content=" drugie imie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content=" nazwisko " FontSize="15"/>
+                        <TextBox Width="100px" Name="uczen_nazwisko"/>
+                        <Label Content="pesel:" FontSize="15"/>
+                        <TextBox Width="100px" Name="uczen_pesel"/>
+                        <Label Content="klasa:" FontSize="15"/>
+                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <MenuItem Header="klasa" VerticalAlignment="Center" HorizontalAlignment="Center"  Name="meni">
+                                <MenuItem Header="1a" Click="uczen1a"/>
+                                <MenuItem Header="1b" Click="uczen1b"/>
+                                <MenuItem Header="1c" Click="uczen1c"/>
+                                <MenuItem Header="2a" Click="uczen2a"/>
+                                <MenuItem Header="2b" Click="uczen2b"/>
+                                <MenuItem Header="2c" Click="uczen2c"/>
+                                <MenuItem Header="3a" Click="uczen3a"/>
+                                <MenuItem Header="3b" Click="uczen3b"/>
+                                <MenuItem Header="3c" Click="uczen3c"/>
+                                <MenuItem Header="4a" Click="uczen4a"/>
+                                <MenuItem Header="4b" Click="uczen4b"/>
+                                <MenuItem Header="4c" Click="uczen4c"/>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
+                        <Label Content="nazwisko panieńskie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="imie matki:" FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="imie ojca:" FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Button Content="Dodaj do tabeli" Margin="20,0,0,0" Background="#FFFF8888" Click="dodanie_ucznia"/>
+                    </StackPanel>
+                </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FFFFC4C4" Offset="1"/>
+                        <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
             </TabItem>
             <TabItem x:Name="zakladka_nauczyciele" Header="nauczyciele" BorderBrush="#FFFFB4B4" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0">Content tabela</Label>
+                    <Label Grid.Row="1">Content dodawanie</Label>
+                </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FFFFC4C4" Offset="1"/>
+                        <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
             </TabItem>
             <TabItem x:Name="zakladka_pracownicy_obslugi" Header="pracownicy obsługi" BorderBrush="#FFFFA5A5" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0">Content tabela</Label>
+                    <Label Grid.Row="1">Content dodawanie</Label>
+                </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FFFFC4C4" Offset="1"/>
+                        <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
             </TabItem>
