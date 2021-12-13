@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace sekretariat_szkoly
     /// </summary>
     public partial class MainWindow : Window
     {
-        int number;
+        //int number;
 
         public MainWindow()
         {
@@ -101,6 +102,24 @@ namespace sekretariat_szkoly
                 //nie ma liczb
 
             }*/
+        }
+
+        private void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)
+        {
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string fullPath = openFileDialog.FileName;
+                    string fileName = openFileDialog.SafeFileName;
+                    string path = fullPath.Replace(fileName, "");
+
+                    Image img = new Image();
+                    img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+                    //testowe.Content = img;
+                    sciezkapliku.Content = fileName;
+                }
         }
     }
 }

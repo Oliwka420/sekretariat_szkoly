@@ -30,8 +30,9 @@
                         <RowDefinition Height="6*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0">Content tabela</Label>
+                    <Label Grid.Row="0" Name="testowe"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                         <Label Content="imie: " FontSize="15"/>
                         <TextBox Width="100px"/>
@@ -41,6 +42,9 @@
                         <TextBox Width="100px" Name="uczen_nazwisko"/>
                         <Label Content="pesel:" FontSize="15"/>
                         <TextBox Width="100px" Name="uczen_pesel"/>
+                        
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="klasa:" FontSize="15"/>
                         <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
                             <MenuItem Header="klasa" VerticalAlignment="Center" HorizontalAlignment="Center"  Name="meni">
@@ -58,8 +62,35 @@
                                 <MenuItem Header="4c" Click="uczen4c"/>
                             </MenuItem>
                         </Menu>
+                        <Label Content="łączona klasa z: " FontSize="15"/>
+                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <MenuItem Header="brak" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <MenuItem Header="brak"/>
+                                <MenuItem Header="1a"/>
+                                <MenuItem Header="1b"/>
+                                <MenuItem Header="1c"/>
+                                <MenuItem Header="2a"/>
+                                <MenuItem Header="2b"/>
+                                <MenuItem Header="2c"/>
+                                <MenuItem Header="3a"/>
+                                <MenuItem Header="3b"/>
+                                <MenuItem Header="3c"/>
+                                <MenuItem Header="4a"/>
+                                <MenuItem Header="4b"/>
+                                <MenuItem Header="4c"/>
+                            </MenuItem>
+                        </Menu>
+                        <Label Content="płeć: " FontSize="15"/>
+                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <MenuItem Header="mezczyzna" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <MenuItem Header="mezczyzna"/>
+                                <MenuItem Header="kobieta"/>
+                            </MenuItem>
+                        </Menu>
+                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15" Margin="20,0,0,0"/>
+                        <Label FontSize="15" Name="sciezkapliku"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
                         <TextBox Width="100px"/>
                         <Label Content="imie matki:" FontSize="15"/>
@@ -82,11 +113,82 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0">Content tabela</Label>
-                    <Label Grid.Row="1">Content dodawanie</Label>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Label Content="imie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="drugie imie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="nazwisko: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="pesel:" FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0">
+                            <MenuItem Header="wychowastwo" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <MenuItem Header="brak"/>
+                                <MenuItem Header="1a"/>
+                                <MenuItem Header="1b"/>
+                                <MenuItem Header="1c"/>
+                                <MenuItem Header="2a"/>
+                                <MenuItem Header="2b"/>
+                                <MenuItem Header="2c"/>
+                                <MenuItem Header="3a"/>
+                                <MenuItem Header="3b"/>
+                                <MenuItem Header="3c"/>
+                                <MenuItem Header="4a"/>
+                                <MenuItem Header="4b"/>
+                                <MenuItem Header="4c"/>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
+                        <Label Content="płeć: " FontSize="15"/>
+                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <MenuItem Header="mezczyzna" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                <MenuItem Header="mezczyzna"/>
+                                <MenuItem Header="kobieta"/>
+                            </MenuItem>
+                        </Menu>
+                        <Label Content="nazwisko panieńskie: " FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="imie matki:" FontSize="15"/>
+                        <TextBox Width="100px"/>
+                        <Label Content="imie ojca:" FontSize="15"/>
+                        <TextBox Width="100px"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
+                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15" Margin="20,0,0,0"/>
+                        <Label FontSize="15"/>
+                        <Label Content="Data urodzenia: " FontSize="15"/>
+                        <DatePicker FontSize="15"/>
+                        <Label Content="Data zatrudnienia: " FontSize="15"/>
+                        <DatePicker FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom">
+                        <ComboBox>
+                            <ListBox SelectionMode="Multiple">
+                                <ListBoxItem Content="1a"/>
+                                <ListBoxItem Content="1b"/>
+                                <ListBoxItem Content="1c"/>
+                                <ListBoxItem Content="2a"/>
+                                <ListBoxItem Content="2b"/>
+                                <ListBoxItem Content="2c"/>
+                                <ListBoxItem Content="3a"/>
+                                <ListBoxItem Content="3b"/>
+                                <ListBoxItem Content="3c"/>
+                                <ListBoxItem Content="4a"/>
+                                <ListBoxItem Content="4b"/>
+                                <ListBoxItem Content="4c"/>
+                            </ListBox>
+                        </ComboBox>
+
+                        <Button Content="Dodaj" Margin="20,0,0,0" Background="#FFFF8888"/>
+                    </StackPanel>
                 </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
@@ -101,11 +203,11 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0">Content tabela</Label>
-                    <Label Grid.Row="1">Content dodawanie</Label>
                 </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
