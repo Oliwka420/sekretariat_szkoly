@@ -112,6 +112,7 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                         <Label Content="imie: " FontSize="15"/>
@@ -182,6 +183,60 @@
                         </ComboBox>
 
                         <Button Content="Dodaj" Margin="20,0,0,0" Background="#FFFF8888"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="5">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="klasy: " FontSize="10" Margin="0,0,0,-11"/>
+                            <Label Content="godziny: " FontSize="10"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="1a: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="1b: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="1c: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="2a: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="2b: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="2c: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="3a: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="3b: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="3c: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="4a: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="4b: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <Label Content="4c: " FontSize="10"/>
+                            <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
                 <TabItem.Background>
