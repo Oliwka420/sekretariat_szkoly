@@ -35,13 +35,13 @@
                     <Label Grid.Row="0" Name="testowe"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                         <Label Content="imie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content=" drugie imie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content=" nazwisko " FontSize="15"/>
-                        <TextBox Width="100px" Name="uczen_nazwisko"/>
+                        <TextBox Width="100px" Name="uczen_nazwisko"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="pesel:" FontSize="15"/>
-                        <TextBox Width="100px" Name="uczen_pesel"/>
+                        <TextBox Width="100px" Name="uczen_pesel"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
@@ -86,11 +86,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="imie matki:" FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="imie ojca:" FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Button Content="Dodaj do tabeli" Margin="20,0,0,0" Background="#FFFF8888" Click="dodanie_ucznia"/>
                     </StackPanel>
                 </Grid>
@@ -99,7 +99,7 @@
                         <GradientStop Color="#FFF0F0F0"/>
                         <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
-                </TabItem.Background>//dsadsa
+                </TabItem.Background>
             </TabItem>
             <TabItem x:Name="zakladka_nauczyciele" Header="nauczyciele" BorderBrush="#FFFFB4B4" >
                 <Grid>
@@ -112,17 +112,17 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15"/>
                         <Label Content="imie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="drugie imie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="nazwisko: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="pesel:" FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
@@ -132,11 +132,11 @@
                             <ComboBoxItem Content="kobieta"/>
                         </ComboBox>
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="imie matki:" FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label Content="imie ojca:" FontSize="15"/>
-                        <TextBox Width="100px"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="wychowastwo: " FontSize="15"/>
@@ -162,8 +162,6 @@
                         <DatePicker FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom">
-
-                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15"/>
                         <Label Content="Klasy w ktorych uczy: " FontSize="15"/>
                         <ComboBox Height="15" Width="19">
                             <ListBox SelectionMode="Multiple">
@@ -181,13 +179,9 @@
                                 <ListBoxItem Content="4c"/>
                             </ListBox>
                         </ComboBox>
-
-                        <Button Content="Dodaj" Margin="20,0,0,0" Background="#FFFF8888"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="5">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <Label Content="klasy: " FontSize="10" Margin="0,0,0,-11"/>
-                            <Label Content="godziny: " FontSize="10"/>
+                            <Label Content="klasy: " FontSize="10" Margin="20,0,0,-11"/>
+                            <Label Content="godziny: " FontSize="10" Margin="20,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
                             <Label Content="1a: " FontSize="10"/>
@@ -237,6 +231,7 @@
                             <Label Content="4c: " FontSize="10"/>
                             <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
                         </StackPanel>
+                        <Button Content="Dodaj" Margin="20,6,0,6" Background="#FFFF8888" FontSize="15"/>
                     </StackPanel>
                 </Grid>
                 <TabItem.Background>
