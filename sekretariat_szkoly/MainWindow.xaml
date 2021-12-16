@@ -46,47 +46,41 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="klasa:" FontSize="15"/>
-                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <MenuItem Header="klasa" VerticalAlignment="Center" HorizontalAlignment="Center"  Name="meni">
-                                <MenuItem Header="1a" Click="uczen1a"/>
-                                <MenuItem Header="1b" Click="uczen1b"/>
-                                <MenuItem Header="1c" Click="uczen1c"/>
-                                <MenuItem Header="2a" Click="uczen2a"/>
-                                <MenuItem Header="2b" Click="uczen2b"/>
-                                <MenuItem Header="2c" Click="uczen2c"/>
-                                <MenuItem Header="3a" Click="uczen3a"/>
-                                <MenuItem Header="3b" Click="uczen3b"/>
-                                <MenuItem Header="3c" Click="uczen3c"/>
-                                <MenuItem Header="4a" Click="uczen4a"/>
-                                <MenuItem Header="4b" Click="uczen4b"/>
-                                <MenuItem Header="4c" Click="uczen4c"/>
-                            </MenuItem>
-                        </Menu>
+                        <ComboBox>
+                            <ComboBoxItem Content="1a"/>
+                            <ComboBoxItem Content="1b"/>
+                            <ComboBoxItem Content="1c"/>
+                            <ComboBoxItem Content="2a"/>
+                            <ComboBoxItem Content="2b"/>
+                            <ComboBoxItem Content="2c"/>
+                            <ComboBoxItem Content="3a"/>
+                            <ComboBoxItem Content="3b"/>
+                            <ComboBoxItem Content="3c"/>
+                            <ComboBoxItem Content="4a"/>
+                            <ComboBoxItem Content="4b"/>
+                            <ComboBoxItem Content="4c"/>
+                        </ComboBox>
                         <Label Content="łączona klasa z: " FontSize="15"/>
-                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <MenuItem Header="brak" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                <MenuItem Header="brak"/>
-                                <MenuItem Header="1a"/>
-                                <MenuItem Header="1b"/>
-                                <MenuItem Header="1c"/>
-                                <MenuItem Header="2a"/>
-                                <MenuItem Header="2b"/>
-                                <MenuItem Header="2c"/>
-                                <MenuItem Header="3a"/>
-                                <MenuItem Header="3b"/>
-                                <MenuItem Header="3c"/>
-                                <MenuItem Header="4a"/>
-                                <MenuItem Header="4b"/>
-                                <MenuItem Header="4c"/>
-                            </MenuItem>
-                        </Menu>
+                        <ComboBox FontSize="15">
+                            <ComboBoxItem Content="brak" IsSelected="True"/>
+                            <ComboBoxItem Content="1a"/>
+                            <ComboBoxItem Content="1b"/>
+                            <ComboBoxItem Content="1c"/>
+                            <ComboBoxItem Content="2a"/>
+                            <ComboBoxItem Content="2b"/>
+                            <ComboBoxItem Content="2c"/>
+                            <ComboBoxItem Content="3a"/>
+                            <ComboBoxItem Content="3b"/>
+                            <ComboBoxItem Content="3c"/>
+                            <ComboBoxItem Content="4a"/>
+                            <ComboBoxItem Content="4b"/>
+                            <ComboBoxItem Content="4c"/>
+                        </ComboBox>
                         <Label Content="płeć: " FontSize="15"/>
-                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <MenuItem Header="mezczyzna" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                <MenuItem Header="mezczyzna"/>
-                                <MenuItem Header="kobieta"/>
-                            </MenuItem>
-                        </Menu>
+                        <ComboBox>
+                            <ComboBoxItem Content="mezczyzna"/>
+                            <ComboBoxItem Content="kobieta" IsSelected="True"/>
+                        </ComboBox>
                         <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15" Margin="20,0,0,0"/>
                         <Label FontSize="15" Name="sciezkapliku"/>
                     </StackPanel>
@@ -128,32 +122,14 @@
                         <TextBox Width="100px"/>
                         <Label Content="pesel:" FontSize="15"/>
                         <TextBox Width="100px"/>
-                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0">
-                            <MenuItem Header="wychowastwo" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <MenuItem Header="brak"/>
-                                <MenuItem Header="1a"/>
-                                <MenuItem Header="1b"/>
-                                <MenuItem Header="1c"/>
-                                <MenuItem Header="2a"/>
-                                <MenuItem Header="2b"/>
-                                <MenuItem Header="2c"/>
-                                <MenuItem Header="3a"/>
-                                <MenuItem Header="3b"/>
-                                <MenuItem Header="3c"/>
-                                <MenuItem Header="4a"/>
-                                <MenuItem Header="4b"/>
-                                <MenuItem Header="4c"/>
-                            </MenuItem>
-                        </Menu>
+                        
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="płeć: " FontSize="15"/>
-                        <Menu HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <MenuItem Header="mezczyzna" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                <MenuItem Header="mezczyzna"/>
-                                <MenuItem Header="kobieta"/>
-                            </MenuItem>
-                        </Menu>
+                        <ComboBox>
+                            <ComboBoxItem Content="mezczyzna"/>
+                            <ComboBoxItem Content="kobieta"/>
+                        </ComboBox>
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
                         <TextBox Width="100px"/>
                         <Label Content="imie matki:" FontSize="15"/>
@@ -162,7 +138,22 @@
                         <TextBox Width="100px"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
-                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15" Margin="20,0,0,0"/>
+                        <Label Content="wychowastwo: " FontSize="15"/>
+                        <ComboBox>
+                            <ComboBoxItem Content="brak" IsSelected="True"/>
+                            <ComboBoxItem Content="1a"/>
+                            <ComboBoxItem Content="1b"/>
+                            <ComboBoxItem Content="1c"/>
+                            <ComboBoxItem Content="2a"/>
+                            <ComboBoxItem Content="2b"/>
+                            <ComboBoxItem Content="2c"/>
+                            <ComboBoxItem Content="3a"/>
+                            <ComboBoxItem Content="3b"/>
+                            <ComboBoxItem Content="3c"/>
+                            <ComboBoxItem Content="4a"/>
+                            <ComboBoxItem Content="4b"/>
+                            <ComboBoxItem Content="4c"/>
+                        </ComboBox>
                         <Label FontSize="15"/>
                         <Label Content="Data urodzenia: " FontSize="15"/>
                         <DatePicker FontSize="15"/>
@@ -170,7 +161,10 @@
                         <DatePicker FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom">
-                        <ComboBox>
+
+                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15"/>
+                        <Label Content="Klasy w ktorych uczy: " FontSize="15"/>
+                        <ComboBox Height="15" Width="19">
                             <ListBox SelectionMode="Multiple">
                                 <ListBoxItem Content="1a"/>
                                 <ListBoxItem Content="1b"/>
