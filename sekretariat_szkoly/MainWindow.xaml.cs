@@ -54,6 +54,25 @@ namespace sekretariat_szkoly
                 //nie ma liczb
 
             }*/
+
+            String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
+            ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
+            ComboBoxItem laczona = (ComboBoxItem)uczen_laczona_klasa.SelectedItem;
+            ComboBoxItem Plec = (ComboBoxItem)uczen_plec.SelectedItem;
+
+            UImie = uczen_imie.Text;
+            U2Imie = uczen2imie.Text;
+            UNazwisko = uczen_nazwisko.Text;
+            UPesel = uczen_pesel.Text;
+            U2Nazwisko = uczen2nazwisko.Text;
+            UMatka = uczen_matka.Text;
+            UOjciec = uczen_ojciec.Text;
+            UKlasa = klasa.Content.ToString();
+            Ulaczona = laczona.Content.ToString();
+            UPlec = Plec.Content.ToString();
+
+            //testowe.Content = UImie + U2Imie + UNazwisko + UPesel + U2Nazwisko + UMatka + UOjciec + UKlasa + Ulaczona + UPlec;
+
         }
 
         private void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)

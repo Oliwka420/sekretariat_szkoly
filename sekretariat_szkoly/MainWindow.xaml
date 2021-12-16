@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="259*"/>
             <RowDefinition Height="176*"/>
@@ -32,21 +33,85 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Name="testowe"/>
+                    <StackPanel Grid.Row="0">
+                        <FlowDocumentReader>
+                            <FlowDocument>
+
+                                <Table CellSpacing="5">
+
+                                    <Table.Columns>
+                                        <TableColumn/>
+                                        <TableColumn/>
+                                        <TableColumn/>
+                                        <TableColumn/>
+                                    </Table.Columns>
+
+                                    <TableRowGroup>
+
+                                        <!-- Title row for the table. -->
+                                        <TableRow Background="SkyBlue">
+                                            <TableCell ColumnSpan="4" TextAlignment="Center">
+                                                <Paragraph FontSize="24pt" FontWeight="Bold">Planetary Information</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        <!-- Header row for the table. -->
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph>Planet</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>Planet</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>Planet</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>Planet</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        <!-- Sub-title row for the inner planets. -->
+                                        <TableRow>
+                                            <TableCell ColumnSpan="4">
+                                                <Paragraph FontSize="14pt" FontWeight="Bold">The Inner Planets</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        <!-- Four data rows for the inner planets. -->
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph>Mercury</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>57,910,000 km</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>4,880 km</Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph>3.30e23 kg</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </FlowDocument>
+                        </FlowDocumentReader>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                         <Label Content="imie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen_imie"/>
                         <Label Content=" drugie imie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen2imie"/>
                         <Label Content=" nazwisko " FontSize="15"/>
-                        <TextBox Width="100px" Name="uczen_nazwisko"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen_nazwisko"/>
                         <Label Content="pesel:" FontSize="15"/>
-                        <TextBox Width="100px" Name="uczen_pesel"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen_pesel"/>
                         
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="klasa:" FontSize="15"/>
-                        <ComboBox>
+                        <ComboBox Name="uczen_klasa">
                             <ComboBoxItem Content="1a"/>
                             <ComboBoxItem Content="1b"/>
                             <ComboBoxItem Content="1c"/>
@@ -61,7 +126,7 @@
                             <ComboBoxItem Content="4c"/>
                         </ComboBox>
                         <Label Content="łączona klasa z: " FontSize="15"/>
-                        <ComboBox FontSize="15">
+                        <ComboBox FontSize="15" Name="uczen_laczona_klasa">
                             <ComboBoxItem Content="brak" IsSelected="True"/>
                             <ComboBoxItem Content="1a"/>
                             <ComboBoxItem Content="1b"/>
@@ -77,7 +142,7 @@
                             <ComboBoxItem Content="4c"/>
                         </ComboBox>
                         <Label Content="płeć: " FontSize="15"/>
-                        <ComboBox>
+                        <ComboBox Name="uczen_plec">
                             <ComboBoxItem Content="mezczyzna"/>
                             <ComboBoxItem Content="kobieta" IsSelected="True"/>
                         </ComboBox>
@@ -86,11 +151,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen2nazwisko"/>
                         <Label Content="imie matki:" FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen_matka"/>
                         <Label Content="imie ojca:" FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="uczen_ojciec"/>
                         <Button Content="Dodaj do tabeli" Margin="20,0,0,0" Background="#FFFF8888" Click="dodanie_ucznia"/>
                     </StackPanel>
                 </Grid>
