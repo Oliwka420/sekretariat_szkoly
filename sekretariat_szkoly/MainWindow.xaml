@@ -99,7 +99,7 @@
                         <GradientStop Color="#FFF0F0F0"/>
                         <GradientStop Color="#FFFFC4C4"/>
                     </LinearGradientBrush>
-                </TabItem.Background>
+                </TabItem.Background>//dsadsa
             </TabItem>
             <TabItem x:Name="zakladka_nauczyciele" Header="nauczyciele" BorderBrush="#FFFFB4B4" >
                 <Grid>
