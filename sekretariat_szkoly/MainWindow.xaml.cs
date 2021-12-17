@@ -63,13 +63,9 @@ namespace sekretariat_szkoly
             currentRow.FontWeight = System.Windows.FontWeights.Normal;
 
             // Add the header row with content,
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
-            // and set the row to span all 6 columns.
-            currentRow.Cells[0].ColumnSpan =3;
 
-            /*String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
+
+            String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
             ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem laczona = (ComboBoxItem)uczen_laczona_klasa.SelectedItem;
             ComboBoxItem Plec = (ComboBoxItem)uczen_plec.SelectedItem;
@@ -85,8 +81,21 @@ namespace sekretariat_szkoly
             Ulaczona = laczona.Content.ToString();
             UPlec = Plec.Content.ToString();
 
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UImie))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(U2Imie))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UNazwisko))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UPesel))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UKlasa))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(Ulaczona))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UPlec))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(U2Nazwisko))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UMatka))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UOjciec))));
+
+
+            // and set the row to span all 6 columns.
+            currentRow.Cells[0].ColumnSpan = 1;
             //testowe.Content = UImie + U2Imie + UNazwisko + UPesel + U2Nazwisko + UMatka + UOjciec + UKlasa + Ulaczona + UPlec;
-            */
         }
 
         private void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)
