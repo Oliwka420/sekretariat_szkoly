@@ -32,6 +32,8 @@ namespace sekretariat_szkoly
         
         private void dodanie_ucznia(object sender, RoutedEventArgs e)
         {
+
+            
             /*bool isNumber = int.TryParse(uczen_pesel.Text, out number);
 
             if (isNumber)
@@ -54,15 +56,6 @@ namespace sekretariat_szkoly
                 //nie ma liczb
 
             }*/
-            table1.RowGroups[0].Rows.Add(new TableRow());
-            TableRow currentRow = table1.RowGroups[0].Rows[2];
-
-            // Global formatting for the footer row.
-            currentRow.Background = Brushes.LightGray;
-            currentRow.FontSize = 18;
-            currentRow.FontWeight = System.Windows.FontWeights.Normal;
-
-            // Add the header row with content,
 
 
             String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
@@ -81,21 +74,54 @@ namespace sekretariat_szkoly
             Ulaczona = laczona.Content.ToString();
             UPlec = Plec.Content.ToString();
 
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UImie))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(U2Imie))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UNazwisko))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UPesel))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UKlasa))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(Ulaczona))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UPlec))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(U2Nazwisko))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UMatka))));
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(UOjciec))));
+            var rowGroup = table1.RowGroups.FirstOrDefault();
 
+            if (rowGroup != null)
+            {
+                TableRow row = new TableRow();
 
-            // and set the row to span all 6 columns.
-            currentRow.Cells[0].ColumnSpan = 1;
-            //testowe.Content = UImie + U2Imie + UNazwisko + UPesel + U2Nazwisko + UMatka + UOjciec + UKlasa + Ulaczona + UPlec;
+                TableCell cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UImie)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(U2Imie)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UNazwisko)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UPesel)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UKlasa)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(Ulaczona)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UPlec)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(U2Nazwisko)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UMatka)));
+                row.Cells.Add(cell);
+
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(UOjciec)));
+                row.Cells.Add(cell);
+
+                rowGroup.Rows.Add(row);
+            }
         }
 
         private void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)

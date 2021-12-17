@@ -22,7 +22,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
             </TabItem>
-            <TabItem x:Name="zakladka_uczniowie" Header="uczniowie" BorderBrush="#FFFFB2B2" >
+            <TabItem x:Name="zakladka_uczniowie" Header="uczniowie" BorderBrush="#FFFFB2B2">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -36,7 +36,7 @@
                     <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False">
                         <FlowDocument>
 
-                            <Table CellSpacing="0" Name="table1">
+                            <Table CellSpacing="0" Name="table1" BorderBrush="#FF320909">
 
                                 <Table.Columns>
                                     <TableColumn/>
@@ -135,7 +135,7 @@
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="klasa:" FontSize="15"/>
                         <ComboBox Name="uczen_klasa">
-                            <ComboBoxItem Content="1a"/>
+                            <ComboBoxItem Content="1a" IsSelected="True"/>
                             <ComboBoxItem Content="1b"/>
                             <ComboBoxItem Content="1c"/>
                             <ComboBoxItem Content="2a"/>
