@@ -54,8 +54,22 @@ namespace sekretariat_szkoly
                 //nie ma liczb
 
             }*/
+            table1.RowGroups[0].Rows.Add(new TableRow());
+            TableRow currentRow = table1.RowGroups[0].Rows[2];
 
-            String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
+            // Global formatting for the footer row.
+            currentRow.Background = Brushes.LightGray;
+            currentRow.FontSize = 18;
+            currentRow.FontWeight = System.Windows.FontWeights.Normal;
+
+            // Add the header row with content,
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Projected 2004 Revenue: $810,000"))));
+            // and set the row to span all 6 columns.
+            currentRow.Cells[0].ColumnSpan =3;
+
+            /*String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
             ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem laczona = (ComboBoxItem)uczen_laczona_klasa.SelectedItem;
             ComboBoxItem Plec = (ComboBoxItem)uczen_plec.SelectedItem;
@@ -72,7 +86,7 @@ namespace sekretariat_szkoly
             UPlec = Plec.Content.ToString();
 
             //testowe.Content = UImie + U2Imie + UNazwisko + UPesel + U2Nazwisko + UMatka + UOjciec + UKlasa + Ulaczona + UPlec;
-
+            */
         }
 
         private void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)
