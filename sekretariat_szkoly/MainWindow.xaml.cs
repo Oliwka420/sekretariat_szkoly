@@ -143,15 +143,20 @@ namespace sekretariat_szkoly
                     sciezkapliku.Content = fileName;
                 }
         }
-        
+
         private void dodanie_nauczyciela(object sender, RoutedEventArgs e)
         {
-
             List<string> add_list = new List<string>();
             foreach (var item in lista.SelectedItems)
             {
                 add_list.Add(item.ToString());
             }
+            for (int i = 0; i < add_list.Count; i++)
+            {
+                add_list[i] = add_list[i].Substring(add_list[i].Length - 2);
+            } 
+
+                
             string report = string.Join(Environment.NewLine, add_list.Select(array => string.Join(" ", array)));
             test.Text = report;
         }
