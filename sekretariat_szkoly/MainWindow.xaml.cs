@@ -14,12 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
+using System.Data;
 
 namespace sekretariat_szkoly
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         //int number;
@@ -28,8 +27,7 @@ namespace sekretariat_szkoly
         {
             InitializeComponent();
         }
-        
-        
+
         private void dodanie_ucznia(object sender, RoutedEventArgs e)
         {
 
@@ -58,7 +56,7 @@ namespace sekretariat_szkoly
             }*/
 
 
-            String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec;
+            String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec, Udata;
             ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem laczona = (ComboBoxItem)uczen_laczona_klasa.SelectedItem;
             ComboBoxItem Plec = (ComboBoxItem)uczen_plec.SelectedItem;
@@ -73,7 +71,7 @@ namespace sekretariat_szkoly
             UKlasa = klasa.Content.ToString();
             Ulaczona = laczona.Content.ToString();
             UPlec = Plec.Content.ToString();
-
+            Udata = UczenData.SelectedDate.Value.Date.ToShortDateString();
             var rowGroup = table1.RowGroups.FirstOrDefault();
 
             if (rowGroup != null)
@@ -120,6 +118,10 @@ namespace sekretariat_szkoly
                 cell.Blocks.Add(new Paragraph(new Run(UOjciec)));
                 row.Cells.Add(cell);
 
+                cell = new TableCell();
+                cell.Blocks.Add(new Paragraph(new Run(Udata)));
+                row.Cells.Add(cell);
+
                 rowGroup.Rows.Add(row);
             }
         }
@@ -141,5 +143,18 @@ namespace sekretariat_szkoly
                     sciezkapliku.Content = fileName;
                 }
         }
+        
+        private void dodanie_nauczyciela(object sender, RoutedEventArgs e)
+        {
+
+            List<string> add_list = new List<string>();
+            foreach (var item in lista.SelectedItems)
+            {
+                add_list.Add(item.ToString());
+            }
+            string report = string.Join(Environment.NewLine, add_list.Select(array => string.Join(" ", array)));
+            test.Text = report;
+        }
+
     }
 }

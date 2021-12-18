@@ -33,7 +33,7 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False">
+                    <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" Zoom="1">
                         <FlowDocument>
 
                             <Table CellSpacing="0" Name="table1" BorderBrush="#FF320909">
@@ -77,6 +77,9 @@
                                         </TableCell>
                                         <TableCell TextAlignment="Center">
                                             <Paragraph FontSize="10pt">imie ojca</Paragraph>
+                                        </TableCell> 
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Data Urodzenia</Paragraph>
                                         </TableCell>
                                         <TableCell TextAlignment="Center">
                                             <Paragraph FontSize="10pt">zdjęcie</Paragraph>
@@ -114,7 +117,10 @@
                                             <Paragraph>UOjciec</Paragraph>
                                         </TableCell>
                                         <TableCell>
-                                            <Paragraph>zdj xd</Paragraph>
+                                            <Paragraph>Data urodzenia</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Zdjecie</Paragraph>
                                         </TableCell>
                                     </TableRow>
                                 </TableRowGroup>
@@ -133,6 +139,8 @@
                         
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
+                        <Label Content="Data urodzenia: " FontSize="10"/>
+                        <DatePicker FontSize="15" Name="UczenData"/>
                         <Label Content="klasa:" FontSize="15"/>
                         <ComboBox Name="uczen_klasa">
                             <ComboBoxItem Content="1a" IsSelected="True"/>
@@ -201,34 +209,35 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
+                    <TextBox Name="test" Grid.Row="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                         <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15"/>
                         <Label Content="imie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielImie"/>
                         <Label Content="drugie imie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="Nauczyciel2Imie"/>
                         <Label Content="nazwisko: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielNazwisko"/>
                         <Label Content="pesel:" FontSize="15"/>
-                        <TextBox Width="100px" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielPesel"/>
                         
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="płeć: " FontSize="15"/>
-                        <ComboBox>
+                        <ComboBox Name="NauczycielPlec">
                             <ComboBoxItem Content="mezczyzna"/>
-                            <ComboBoxItem Content="kobieta"/>
+                            <ComboBoxItem Content="kobieta" IsSelected="True"/>
                         </ComboBox>
                         <Label Content="nazwisko panieńskie: " FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="Nauczyciel2Nazwisko"/>
                         <Label Content="imie matki:" FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielMatka"/>
                         <Label Content="imie ojca:" FontSize="15"/>
-                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielOjciec"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="wychowastwo: " FontSize="15"/>
-                        <ComboBox>
+                        <ComboBox Name="NauczycielWychowawca">
                             <ComboBoxItem Content="brak" IsSelected="True"/>
                             <ComboBoxItem Content="1a"/>
                             <ComboBoxItem Content="1b"/>
@@ -245,14 +254,14 @@
                         </ComboBox>
                         <Label FontSize="15"/>
                         <Label Content="Data urodzenia: " FontSize="15"/>
-                        <DatePicker FontSize="15"/>
+                        <DatePicker FontSize="15" Name="NauczycielUrodzenie"/>
                         <Label Content="Data zatrudnienia: " FontSize="15"/>
-                        <DatePicker FontSize="15"/>
+                        <DatePicker FontSize="15" Name="NauczycielZatrudnienie"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom">
                         <Label Content="Klasy w ktorych uczy: " FontSize="15"/>
                         <ComboBox Height="15" Width="19">
-                            <ListBox SelectionMode="Multiple">
+                            <ListBox SelectionMode="Multiple" Name="lista">
                                 <ListBoxItem Content="1a"/>
                                 <ListBoxItem Content="1b"/>
                                 <ListBoxItem Content="1c"/>
@@ -319,7 +328,7 @@
                             <Label Content="4c: " FontSize="10"/>
                             <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
                         </StackPanel>
-                        <Button Content="Dodaj" Margin="20,6,0,6" Background="#FFFF8888" FontSize="15"/>
+                        <Button Content="Dodaj" Margin="20,6,0,6" Background="#FFFF8888" FontSize="15" Click="dodanie_nauczyciela"/>
                     </StackPanel>
                 </Grid>
                 <TabItem.Background>
