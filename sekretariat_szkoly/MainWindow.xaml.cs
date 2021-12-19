@@ -157,7 +157,7 @@ namespace sekretariat_szkoly
             } 
 
                 
-            string report = string.Join(Environment.NewLine, add_list.Select(array => string.Join(" ", array)));
+            string report = string.Join(" ", add_list);
             test.Text = report;
         }
 
