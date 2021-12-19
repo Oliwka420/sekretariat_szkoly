@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sekretariat_szkoly"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sekretariat szkolny" Height="450" Width="800">
     <Grid>
         
         <Grid.RowDefinitions>
@@ -36,7 +36,7 @@
                     <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" Zoom="1">
                         <FlowDocument>
 
-                            <Table CellSpacing="0" Name="table1" BorderBrush="#FF320909">
+                            <Table CellSpacing="0" Name="table1" BorderBrush="#FF320909" FontSize="10">
 
                                 <Table.Columns>
                                     <TableColumn/>
@@ -209,9 +209,114 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <TextBox Name="test" Grid.Row="0"/>
+                    <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" Zoom="1">
+                        <FlowDocument>
+
+                            <Table CellSpacing="0" Name="table2" BorderBrush="#FF320909"  FontSize="10">
+
+                                <Table.Columns>
+                                    <TableColumn/>
+                                    <TableColumn/>
+                                    <TableColumn/>
+                                </Table.Columns>
+
+                                <TableRowGroup>
+
+                                    <!-- Title row for the table. -->
+                                    <TableRow>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Imie</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Drugie imie</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Nazwisko</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Wychowastwo</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Pesel</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">płeć</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Nazwisko panieńskie</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">imie matki</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">imie ojca</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Przedmioty</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Data Urodzenia</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Data Zatrudnienia</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">klasy które uczy</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">zdjęcie</Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>Uimie</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UDrugie</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UNazwisko</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Wychowastwo</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UPesel</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UPlec</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UPanienskie</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UMatka</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>UOjciec</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>przedmioty</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Data urodzenia</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Data zartudnienia</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>klasy</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Zdjecie</Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                            </Table>
+                        </FlowDocument>
+                    </FlowDocumentReader>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                        <Button Content="przeslij zdjecie" Click="przesylanie_zdjecia_uczen" FontSize="15"/>
+                        <Button Content="przeslij zdjecie" FontSize="15" Click="przesylanie_zdjecia_nauczyciel"/>
                         <Label Content="imie: " FontSize="15"/>
                         <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="NauczycielImie"/>
                         <Label Content="drugie imie: " FontSize="15"/>
@@ -224,7 +329,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
                         <Label Content="płeć: " FontSize="15"/>
-                        <ComboBox Name="NauczycielPlec">
+                        <ComboBox Name="NauczycielPlec" FontSize="15">
                             <ComboBoxItem Content="mezczyzna"/>
                             <ComboBoxItem Content="kobieta" IsSelected="True"/>
                         </ComboBox>
@@ -237,7 +342,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Bottom">
                         <Label Content="wychowastwo: " FontSize="15"/>
-                        <ComboBox Name="NauczycielWychowawca">
+                        <ComboBox Name="NauczycielWychowawca" FontSize="15">
                             <ComboBoxItem Content="brak" IsSelected="True"/>
                             <ComboBoxItem Content="1a"/>
                             <ComboBoxItem Content="1b"/>
@@ -328,6 +433,23 @@
                             <Label Content="4c: " FontSize="10"/>
                             <TextBox Height="20" Text="0" FontSize="10" HorizontalAlignment="Center"/>
                         </StackPanel>
+                        <Label Content="przedmioty: " FontSize="15"/>
+                        <ComboBox Height="15" Width="19">
+                            <ListBox SelectionMode="Multiple" Name="lista2">
+                                <ListBoxItem Content="matematyka"/>
+                                <ListBoxItem Content="informatyka"/>
+                                <ListBoxItem Content="j.polski"/>
+                                <ListBoxItem Content="j.angielski"/>
+                                <ListBoxItem Content="j.hiszpanski"/>
+                                <ListBoxItem Content="religia"/>
+                                <ListBoxItem Content="wf"/>
+                                <ListBoxItem Content="biologia"/>
+                                <ListBoxItem Content="fizyka"/>
+                                <ListBoxItem Content="chemia"/>
+                                <ListBoxItem Content="etyka"/>
+                                <ListBoxItem Content="geografia"/>
+                            </ListBox>
+                        </ComboBox>
                         <Button Content="Dodaj" Margin="20,6,0,6" Background="#FFFF8888" FontSize="15" Click="dodanie_nauczyciela"/>
                     </StackPanel>
                 </Grid>
@@ -349,6 +471,151 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
+                    <FlowDocumentReader Grid.Row="0" ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" Zoom="1">
+                        <FlowDocument>
+
+                            <Table CellSpacing="0" Name="table3" BorderBrush="#FF320909"  FontSize="10">
+
+                                <Table.Columns>
+                                    <TableColumn/>
+                                    <TableColumn/>
+                                    <TableColumn/>
+                                </Table.Columns>
+
+                                <TableRowGroup>
+
+                                    <!-- Title row for the table. -->
+                                    <TableRow>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Imie</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Drugie imie</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Nazwisko</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Nazwisko panieńskie</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Imie matki</Paragraph>
+                                        </TableCell>
+                                        <TableCell ColumnSpan="1" TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Imie ojca</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Data urodzenia</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">pesel</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">płeć</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">etat</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">opis stanowiskaa</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">Data Zatrudnienia</Paragraph>
+                                        </TableCell>
+                                        <TableCell TextAlignment="Center">
+                                            <Paragraph FontSize="10pt">zdjecie</Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>PImie</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PDrugie</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PNazwisko</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>P2Nazwisko</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PMatka</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>POjciec</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PDataur</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PPesel</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>PPlec</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Petat</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Popis</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Data zartudnienia</Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>Zdjecie</Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                            </Table>
+                        </FlowDocument>
+                    </FlowDocumentReader>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+                        <Label Content="Imie: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="PracownikImie"/>
+                        <Label Content="Drugie imie: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="Pracownik2Imie"/>
+                        <Label Content="nazwisko: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="PracownikNazwisko"/>
+                        <Label Content="nazwisko panieńskie: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="Pracownik2Nazwisko"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Imie matki: " FontSize="15"/>
+                            <Label Content="Imie ojca: " FontSize="15" Margin="0,-16,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBox Width="100px"  FontSize="10" Margin="0,7,0,0" Name="PracownikMatka"/>
+                            <TextBox Width="100px"  FontSize="10" Margin="0,3,0,0" Name="PracownikOjciec"/>
+                        </StackPanel>
+                        
+                        
+                        <Label Content="pesel: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="PracownikPesel"/>
+                        <Label Content="data urodzenia: " FontSize="15" VerticalAlignment="Center"/>
+                        <DatePicker FontSize="10" Name="Pracownik_urodzenie" VerticalAlignment="Center"/>
+                        <Button Content="zdjecie" Click="przesylanie_zdjecia_pracownik"/>
+                        <Button Content="dodaj" Click="dodanie_pracownika"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center">
+                        <Label Content="data zatrudnienia: " FontSize="15"/>
+                        <DatePicker FontSize="10" Name="Pracownikzatr"/>
+                        <Label Content="plec: " FontSize="15"/>
+                        <ComboBox Name="PracowniklPlec" FontSize="15">
+                            <ComboBoxItem Content="mezczyzna"/>
+                            <ComboBoxItem Content="kobieta" IsSelected="True"/>
+                        </ComboBox>
+                        <Label Content="etat: " FontSize="15"/>
+                        <ComboBox Name="Pracownikletat" FontSize="15">
+                            <ComboBoxItem Content="cały etat"/>
+                            <ComboBoxItem Content="pół etatu" IsSelected="True"/>
+                        </ComboBox>
+                        <Label Content="opis stanowiska: " FontSize="15"/>
+                        <TextBox Width="100px"  FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Name="PracownikOpis"/>
+                        
+                    </StackPanel>
                 </Grid>
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
