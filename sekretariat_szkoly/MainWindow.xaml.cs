@@ -27,6 +27,15 @@ namespace sekretariat_szkoly
         {
             InitializeComponent();
         }
+        BlockUIContainer zdjecieUcznia;
+        BlockUIContainer zdjecieNauczyciela;
+        BlockUIContainer ZdjeciePracownika;
+        /*
+         ____  _  _  __ _  __ _   ___    __   __         ____   __   ____   __   __ _   __    __  
+        (  __)/ )( \(  ( \(  / ) / __) _(  ) / _\       (    \ /  \ (    \ / _\ (  ( \ (  )  / _\ 
+         ) _) ) \/ (/    / )  ( ( (__ / \) \/    \       ) D ((  O ) ) D (/    \/    /  )(  /    \
+        (__)  \____/\_)__)(__\_) \___)\____/\_/\_/      (____/ \__/ (____/\_/\_/\_)__) (__) \_/\_/ 
+         */
         public void dodanierekordu(string x, TableRow s)
         {
             TableCell cell = new TableCell();
@@ -34,13 +43,11 @@ namespace sekretariat_szkoly
             s.Cells.Add(cell);
         }
 
-        /*public void sprawdzenie_poprawnosc(string co, string skad, bool poprawnosc)
-        {
-
-        }*/
         public void dodanie_ucznia(object sender, RoutedEventArgs e)
         {
             String UImie, U2Imie, UNazwisko, UPesel, U2Nazwisko, UMatka, UOjciec, UKlasa, Ulaczona, UPlec, Udata;
+            bool git_pesel = false, git_nazwisko = false, git_imie = false, git2imie = false, git2Nazwisko = false, git_matka = false, gitOjciec = false, gitData = false;
+            int number;
             ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem laczona = (ComboBoxItem)uczen_laczona_klasa.SelectedItem;
             ComboBoxItem Plec = (ComboBoxItem)uczen_plec.SelectedItem;
@@ -55,9 +62,13 @@ namespace sekretariat_szkoly
             UKlasa = klasa.Content.ToString();
             Ulaczona = laczona.Content.ToString();
             UPlec = Plec.Content.ToString();
+            /*
+             ____  ____  ____   __   _  _  ____  ____   __   __ _   __   ____        ____   __   ____  ____   __   _  _  __ _   __   ____   ___   __  
+            / ___)(  _ \(  _ \ / _\ / )( \(    \(__  ) / _\ (  ( \ (  ) (  __)      (  _ \ /  \ (  _ \(  _ \ / _\ / )( \(  ( \ /  \ / ___) / __) (  ) 
+            \___ \ ) __/ )   //    \\ /\ / ) D ( / _/ /    \/    /  )(   ) _)        ) __/(  O ) ) __/ )   //    \\ /\ //    /(  O )\___ \( (__   )(  
+            (____/(__)  (__\_)\_/\_/(_/\_)(____/(____)\_/\_/\_)__) (__) (____)      (__)   \__/ (__)  (__\_)\_/\_/(_/\_)\_)__) \__/ (____/ \___) (__) 
+             */
 
-            bool git_pesel = false, git_nazwisko = false, git_imie = false, git2imie = false, git2Nazwisko = false, git_matka = false, gitOjciec = false, gitData = false;
-            int number;
             bool isNumber = int.TryParse(UPesel, out number);
             if (isNumber)
             {
@@ -146,6 +157,12 @@ namespace sekretariat_szkoly
             {
                 Udata = UczenData.SelectedDate.Value.Date.ToShortDateString();
                 gitData = true;
+                /*
+                     ____   __   ____   __   __ _   __   ____        ____  ____  __ _   __   ____  ____  _  _        ____   __   ____  ____  __     __  
+                    (    \ /  \ (    \ / _\ (  ( \ (  ) (  __)      (  _ \(  __)(  / ) /  \ (  _ \(    \/ )( \      (_  _) / _\ (  _ \(  __)(  )   (  ) 
+                     ) D ((  O ) ) D (/    \/    /  )(   ) _)        )   / ) _)  )  ( (  O ) )   / ) D () \/ (        )(  /    \ ) _ ( ) _) / (_/\  )(  
+                    (____/ \__/ (____/\_/\_/\_)__) (__) (____)      (__\_)(____)(__\_) \__/ (__\_)(____/\____/       (__) \_/\_/(____/(____)\____/ (__) 
+                 */
                 if (git_nazwisko && git_pesel && git_imie && git2imie && git2Nazwisko && git_matka && gitOjciec && gitData)
                 {
                     var rowGroup = table1.RowGroups.FirstOrDefault();
@@ -171,85 +188,10 @@ namespace sekretariat_szkoly
                 }
             }
         }
-        BlockUIContainer zdjecieUcznia;
-        BlockUIContainer zdjecieNauczyciela;
-        BlockUIContainer ZdjeciePracownika;
-        public void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)
-        {
-
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    string fullPath = openFileDialog.FileName;
-                    string fileName = openFileDialog.SafeFileName;
-                    string path = fullPath.Replace(fileName, "");
-
-                    Image img = new Image();
-                    img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-                //testowe.Content = img;
-                zdjecieUcznia = new BlockUIContainer(img);
-
-                }
-        }
-        private void przesylanie_zdjecia_nauczyciel(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string fullPath = openFileDialog.FileName;
-                string fileName = openFileDialog.SafeFileName;
-                string path = fullPath.Replace(fileName, "");
-
-                Image img = new Image();
-                img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-                //testowe.Content = img;
-                zdjecieNauczyciela = new BlockUIContainer(img);
-            }
-        }
-
-        private void przesylanie_zdjecia_pracownik(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string fullPath = openFileDialog.FileName;
-                string fileName = openFileDialog.SafeFileName;
-                string path = fullPath.Replace(fileName, "");
-
-                Image img = new Image();
-                img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-                //testowe.Content = img;
-                ZdjeciePracownika = new BlockUIContainer(img);
-            }
-        }
         private void dodanie_nauczyciela(object sender, RoutedEventArgs e)
         {
-            List<string> add_list = new List<string>();
-            foreach (var item in lista.SelectedItems)
-            {
-                add_list.Add(item.ToString());
-            }
-            for (int i = 0; i < add_list.Count; i++)
-            {
-                add_list[i] = add_list[i].Substring(add_list[i].Length - 2);
-            } 
-
-            List<string> add_list2 = new List<string>();
-            foreach (var item in lista2.SelectedItems)
-            {
-                add_list2.Add(item.ToString());
-            }
-            for (int i = 0; i < add_list2.Count; i++)
-            {
-                add_list2[i] = add_list2[i].Substring(36);
-            }
-            string klasy_ktore_uczy = string.Join(" ", add_list);
-            string przedmioty_ktore_uczy = string.Join(" ", add_list2);
-
-
+            int number;
+            bool git_imie = false, git2imie = false, gitnazwisko = false, git2nazwisko = false, gitmatka = false, gitojciec = false, gitdaty = false, gitpesel = false;
             String NImie, N2Imie, NNazwisko, N2Nazwisko, NMatka, NOjciec, NData, NData_zatr, NPesel, NPlec, NWychowastwo;
             //ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem wychowastwo = (ComboBoxItem)NauczycielWychowawca.SelectedItem;
@@ -264,32 +206,156 @@ namespace sekretariat_szkoly
             NPesel = NauczycielPesel.Text;
             NPlec = Plec.Content.ToString();
             NWychowastwo = wychowastwo.Content.ToString();
-            NData = NauczycielUrodzenie.SelectedDate.Value.Date.ToShortDateString();
-            NData_zatr = NauczycielZatrudnienie.SelectedDate.Value.Date.ToShortDateString();
 
-            var rowGroup = table2.RowGroups.FirstOrDefault();
-            if (rowGroup != null)
+            List<string> add_list = new List<string>();
+            foreach (var item in lista.SelectedItems)
             {
-                TableRow row = new TableRow();
-                dodanierekordu(NImie, row);
-                dodanierekordu(N2Imie, row);
-                dodanierekordu(NNazwisko, row);
-                dodanierekordu(NWychowastwo, row);
-                dodanierekordu(NPesel, row);
-                dodanierekordu(NPlec, row);
-                dodanierekordu(N2Nazwisko, row);
-                dodanierekordu(NMatka, row);
-                dodanierekordu(NOjciec, row);
-                dodanierekordu(przedmioty_ktore_uczy, row);
-                dodanierekordu(NData, row);
-                dodanierekordu(NData_zatr, row);
-                dodanierekordu(klasy_ktore_uczy, row);
-                TableCell cell = new TableCell();
-                cell.Blocks.Add(zdjecieNauczyciela);
-                row.Cells.Add(cell);
-                rowGroup.Rows.Add(row);
+                add_list.Add(item.ToString());
+            }
+            for (int i = 0; i < add_list.Count; i++)
+            {
+                add_list[i] = add_list[i].Substring(add_list[i].Length - 2);
             }
 
+            List<string> add_list2 = new List<string>();
+            foreach (var item in lista2.SelectedItems)
+            {
+                add_list2.Add(item.ToString());
+            }
+            for (int i = 0; i < add_list2.Count; i++)
+            {
+                add_list2[i] = add_list2[i].Substring(36);
+            }
+            string klasy_ktore_uczy = string.Join(" ", add_list);
+            string przedmioty_ktore_uczy = string.Join(" ", add_list2);
+
+
+            /*
+             ____  ____  ____   __   _  _  ____  ____   __   __ _   __   ____        ____   __   ____  ____   __   _  _  __ _   __   ____   ___   __  
+            / ___)(  _ \(  _ \ / _\ / )( \(    \(__  ) / _\ (  ( \ (  ) (  __)      (  _ \ /  \ (  _ \(  _ \ / _\ / )( \(  ( \ /  \ / ___) / __) (  ) 
+            \___ \ ) __/ )   //    \\ /\ / ) D ( / _/ /    \/    /  )(   ) _)        ) __/(  O ) ) __/ )   //    \\ /\ //    /(  O )\___ \( (__   )(  
+            (____/(__)  (__\_)\_/\_/(_/\_)(____/(____)\_/\_/\_)__) (__) (____)      (__)   \__/ (__)  (__\_)\_/\_/(_/\_)\_)__) \__/ (____/ \___) (__) 
+             */
+            
+            bool isNumber = int.TryParse(NPesel, out number);
+            if (isNumber)
+            {
+                gitpesel = true;
+            }
+            else
+            {
+                MessageBox.Show("nieprawidlowy pesel");
+                gitpesel = false;
+            }
+
+            char[] char_imie = NImie.ToCharArray();
+            bool isString = char_imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(NImie))
+            {
+                MessageBox.Show("nieprawidlowe imie");
+                git_imie = false;
+            }
+            else
+            {
+                git_imie = true;
+            }
+            char[] char_2imie = N2Imie.ToCharArray();
+            isString = char_2imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(N2Imie))
+            {
+                MessageBox.Show("nieprawidlowe drugie imie");
+                git2imie = false;
+            }
+            else
+            {
+                git2imie = true;
+            }
+            char[] charnazwisko = NNazwisko.ToCharArray();
+            isString = charnazwisko.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(NNazwisko))
+            {
+                MessageBox.Show("nieprawidlowe nazwisko");
+                gitnazwisko = false;
+            }
+            else
+            {
+                gitnazwisko = true;
+            }
+            char[] char2nazwisko = N2Nazwisko.ToCharArray();
+            isString = char2nazwisko.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(N2Nazwisko))
+            {
+                MessageBox.Show("nieprawidlowe nazwisko panienskie");
+                git2nazwisko = false;
+            }
+            else
+            {
+                git2nazwisko = true;
+            }
+            char[] charmatka = NMatka.ToCharArray();
+            isString = charmatka.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(NMatka))
+            {
+                MessageBox.Show("nieprawidlowe imie matki");
+                gitmatka = false;
+            }
+            else
+            {
+                gitmatka = true;
+            }
+            char[] charojciec = NOjciec.ToCharArray();
+            isString = charojciec.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(NOjciec))
+            {
+                MessageBox.Show("nieprawidlowe imie ojca");
+                gitojciec = false;
+            }
+            else
+            {
+                gitojciec = true;
+            }
+            if (NauczycielUrodzenie.SelectedDate == null || NauczycielZatrudnienie.SelectedDate == null)
+            {
+                gitdaty = false;
+                MessageBox.Show("wybierz poprawnie daty!");
+            }
+            else
+            {
+                NData = NauczycielUrodzenie.SelectedDate.Value.Date.ToShortDateString();
+                NData_zatr = NauczycielZatrudnienie.SelectedDate.Value.Date.ToShortDateString();
+                gitdaty = true;
+                if (git_imie && git2imie && gitnazwisko && git2nazwisko && gitmatka && gitojciec && gitdaty && gitpesel)
+                {
+                    /*
+                         ____   __   ____   __   __ _   __   ____        ____  ____  __ _   __   ____  ____  _  _        ____   __   ____  ____  __     __  
+                        (    \ /  \ (    \ / _\ (  ( \ (  ) (  __)      (  _ \(  __)(  / ) /  \ (  _ \(    \/ )( \      (_  _) / _\ (  _ \(  __)(  )   (  ) 
+                         ) D ((  O ) ) D (/    \/    /  )(   ) _)        )   / ) _)  )  ( (  O ) )   / ) D () \/ (        )(  /    \ ) _ ( ) _) / (_/\  )(  
+                        (____/ \__/ (____/\_/\_/\_)__) (__) (____)      (__\_)(____)(__\_) \__/ (__\_)(____/\____/       (__) \_/\_/(____/(____)\____/ (__) 
+                     */
+                    var rowGroup = table2.RowGroups.FirstOrDefault();
+                    if (rowGroup != null)
+                    {
+                        TableRow row = new TableRow();
+                        dodanierekordu(NImie, row);
+                        dodanierekordu(N2Imie, row);
+                        dodanierekordu(NNazwisko, row);
+                        dodanierekordu(NWychowastwo, row);
+                        dodanierekordu(NPesel, row);
+                        dodanierekordu(NPlec, row);
+                        dodanierekordu(N2Nazwisko, row);
+                        dodanierekordu(NMatka, row);
+                        dodanierekordu(NOjciec, row);
+                        dodanierekordu(przedmioty_ktore_uczy, row);
+                        dodanierekordu(NData, row);
+                        dodanierekordu(NData_zatr, row);
+                        dodanierekordu(klasy_ktore_uczy, row);
+                        TableCell cell = new TableCell();
+                        cell.Blocks.Add(zdjecieNauczyciela);
+                        row.Cells.Add(cell);
+                        rowGroup.Rows.Add(row);
+                    }
+                }
+            }
         }
 
         private void dodanie_pracownika(object sender, RoutedEventArgs e)
@@ -336,7 +402,64 @@ namespace sekretariat_szkoly
             }
 
         }
+        /*
+             ____  ____  ____  ____  ____  _  _  __     __   __ _   __   ____        ____  ____    __  ____   ___ 
+            (  _ \(  _ \(__  )(  __)/ ___)( \/ )(  )   / _\ (  ( \ (  ) (  __)      (__  )(    \ _(  )(  __) / __)
+             ) __/ )   / / _/  ) _) \___ \ )  / / (_/\/    \/    /  )(   ) _)        / _/  ) D (/ \) \ ) _) ( (__ 
+            (__)  (__\_)(____)(____)(____/(__/  \____/\_/\_/\_)__) (__) (____)      (____)(____/\____/(____) \___)
+         */
 
+        public void przesylanie_zdjecia_uczen(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fullPath = openFileDialog.FileName;
+                string fileName = openFileDialog.SafeFileName;
+                string path = fullPath.Replace(fileName, "");
+
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+                //testowe.Content = img;
+                zdjecieUcznia = new BlockUIContainer(img);
+
+            }
+        }
+        private void przesylanie_zdjecia_nauczyciel(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fullPath = openFileDialog.FileName;
+                string fileName = openFileDialog.SafeFileName;
+                string path = fullPath.Replace(fileName, "");
+
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+                //testowe.Content = img;
+                zdjecieNauczyciela = new BlockUIContainer(img);
+            }
+        }
+
+        private void przesylanie_zdjecia_pracownik(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fullPath = openFileDialog.FileName;
+                string fileName = openFileDialog.SafeFileName;
+                string path = fullPath.Replace(fileName, "");
+
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(fullPath, UriKind.Absolute));
+                //testowe.Content = img;
+                ZdjeciePracownika = new BlockUIContainer(img);
+            }
+        }
 
     }
 }
