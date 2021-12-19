@@ -55,10 +55,8 @@ namespace sekretariat_szkoly
             UKlasa = klasa.Content.ToString();
             Ulaczona = laczona.Content.ToString();
             UPlec = Plec.Content.ToString();
-            Udata = UczenData.SelectedDate.Value.Date.ToShortDateString();
 
-            bool git_pesel = false;
-            bool git_nazwisko = false;
+            bool git_pesel = false, git_nazwisko = false, git_imie = false, git2imie = false, git2Nazwisko = false, git_matka = false, gitOjciec = false, gitData = false;
             int number;
             bool isNumber = int.TryParse(UPesel, out number);
             if (isNumber)
@@ -68,42 +66,108 @@ namespace sekretariat_szkoly
             else
             {
                 MessageBox.Show("nieprawidlowy pesel");
+                git_pesel = false;
 
             }
+            char[] char_imie = UImie.ToCharArray();
+            bool isString = char_imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(UImie))
+            {
+                MessageBox.Show("nieprawidlowe imie");
+                git_imie = false;
+            }
+            else
+            {
+                git_imie = true;
+            }
+
+            char[] char_2imie = U2Imie.ToCharArray();
+            isString = char_2imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(U2Imie))
+            {
+                MessageBox.Show("nieprawidlowe drugie imie");
+                git2imie = false;
+            }
+            else
+            {
+                git2imie = true;
+            }
+
             char[] char_nazwisko = UNazwisko.ToCharArray();
-            bool isString = char_nazwisko.Any(char.IsDigit);
+            isString = char_nazwisko.Any(char.IsDigit);
             if (isString || String.IsNullOrEmpty(UNazwisko))
             {
                 MessageBox.Show("nieprawidlowe nazwisko");
+                git_nazwisko = false;
             }
             else
             {
                 git_nazwisko = true;
             }
-
-            if (git_nazwisko && git_pesel)
+            char[] char_2nazwisko = U2Nazwisko.ToCharArray();
+            isString = char_2nazwisko.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(U2Nazwisko))
             {
-
-
-                var rowGroup = table1.RowGroups.FirstOrDefault();
-                if (rowGroup != null)
+                MessageBox.Show("nieprawidlowe nazwisko panienskie");
+                git2Nazwisko = false;
+            }
+            else
+            {
+                git2Nazwisko = true;
+            }
+            char[] char_matka = UMatka.ToCharArray();
+            isString = char_matka.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(UMatka))
+            {
+                MessageBox.Show("nieprawidlowe imie matki");
+                git_matka = false;
+            }
+            else
+            {
+                git_matka = true;
+            }
+            char[] char_ojciec = UOjciec.ToCharArray();
+            isString = char_ojciec.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(UOjciec))
+            {
+                MessageBox.Show("nieprawidlowe imie ojca");
+                gitOjciec = false;
+            }
+            else
+            {
+                gitOjciec = true;
+            }
+            if (UczenData.SelectedDate == null)
+            {
+                gitData = false;
+                MessageBox.Show("wybierz date urodzenia! ");
+            }
+            else
+            {
+                Udata = UczenData.SelectedDate.Value.Date.ToShortDateString();
+                gitData = true;
+                if (git_nazwisko && git_pesel && git_imie && git2imie && git2Nazwisko && git_matka && gitOjciec && gitData)
                 {
-                    TableRow row = new TableRow();
-                    dodanierekordu(UImie, row);
-                    dodanierekordu(U2Imie, row);
-                    dodanierekordu(UNazwisko, row);
-                    dodanierekordu(UPesel, row);
-                    dodanierekordu(UKlasa, row);
-                    dodanierekordu(Ulaczona, row);
-                    dodanierekordu(UPlec, row);
-                    dodanierekordu(U2Nazwisko, row);
-                    dodanierekordu(UMatka, row);
-                    dodanierekordu(UOjciec, row);
-                    dodanierekordu(Udata, row);
-                    TableCell cell = new TableCell();
-                    cell.Blocks.Add(zdjecieUcznia);
-                    row.Cells.Add(cell);
-                    rowGroup.Rows.Add(row);
+                    var rowGroup = table1.RowGroups.FirstOrDefault();
+                    if (rowGroup != null)
+                    {
+                        TableRow row = new TableRow();
+                        dodanierekordu(UImie, row);
+                        dodanierekordu(U2Imie, row);
+                        dodanierekordu(UNazwisko, row);
+                        dodanierekordu(UPesel, row);
+                        dodanierekordu(UKlasa, row);
+                        dodanierekordu(Ulaczona, row);
+                        dodanierekordu(UPlec, row);
+                        dodanierekordu(U2Nazwisko, row);
+                        dodanierekordu(UMatka, row);
+                        dodanierekordu(UOjciec, row);
+                        dodanierekordu(Udata, row);
+                        TableCell cell = new TableCell();
+                        cell.Blocks.Add(zdjecieUcznia);
+                        row.Cells.Add(cell);
+                        rowGroup.Rows.Add(row);
+                    }
                 }
             }
         }
