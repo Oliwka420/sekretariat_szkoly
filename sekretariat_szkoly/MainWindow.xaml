@@ -14,7 +14,10 @@
         </Grid.RowDefinitions>
         <TabControl TabStripPlacement="Bottom"  FontFamily="Comic Sans MS" FontSize="20" Grid.RowSpan="2">
             <TabItem Header="Menu glowne" BorderBrush="#FFFFC1C1" x:Name="zakladka_menu_glowne">
-                <Label Content="poniżej znajdują sie zakładki, umożliwią pokazanie tabel i opcji dodawania" VerticalAlignment="Bottom" Background="#FFFFE9E9"/>
+                <StackPanel>
+                    <Label Content="nie ma możliwości dodania kogokolwiek do tabeli jeśli dane nie przejdą weryfikacji" Background="#FEFEE9F9"/>
+                    <Label Content="poniżej znajdują sie zakładki, umożliwią pokazanie tabel i opcji dodawania" VerticalAlignment="Bottom" Background="#FFFFE9E9"/>
+                </StackPanel>
                 <TabItem.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#FFF0F0F0"/>

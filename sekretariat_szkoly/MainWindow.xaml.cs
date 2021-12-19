@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Linq;
 using System.Data;
 
 namespace sekretariat_szkoly
@@ -180,9 +179,12 @@ namespace sekretariat_szkoly
                         dodanierekordu(UMatka, row);
                         dodanierekordu(UOjciec, row);
                         dodanierekordu(Udata, row);
-                        TableCell cell = new TableCell();
-                        cell.Blocks.Add(zdjecieUcznia);
-                        row.Cells.Add(cell);
+                        if (zdjecieUcznia != null) {
+                            TableCell cell = new TableCell();
+                            cell.Blocks.Add(zdjecieUcznia);
+                            row.Cells.Add(cell);
+                        }
+                        
                         rowGroup.Rows.Add(row);
                     }
                 }
@@ -349,9 +351,13 @@ namespace sekretariat_szkoly
                         dodanierekordu(NData, row);
                         dodanierekordu(NData_zatr, row);
                         dodanierekordu(klasy_ktore_uczy, row);
-                        TableCell cell = new TableCell();
-                        cell.Blocks.Add(zdjecieNauczyciela);
-                        row.Cells.Add(cell);
+                        if (zdjecieNauczyciela != null)
+                        {
+                            TableCell cell = new TableCell();
+                            cell.Blocks.Add(zdjecieNauczyciela);
+                            row.Cells.Add(cell);
+                        }
+
                         rowGroup.Rows.Add(row);
                     }
                 }
@@ -360,9 +366,10 @@ namespace sekretariat_szkoly
 
         private void dodanie_pracownika(object sender, RoutedEventArgs e)
         {
+            int number;
             String PImie, P2Imie, PNazwisko, P2Nazwisko, Pmatka, POjciec, PData, PPesel, PPlec, PEtat, POpis, PPDataZatr;
+            bool git_imie = false, git2imie = false, gitnazwisko = false, git2nazwisko = false, gitmatka = false, gitojciec = false, gitpesel = false, gitopis = false ,gitdaty = false;
 
-            //ComboBoxItem klasa = (ComboBoxItem)uczen_klasa.SelectedItem;
             ComboBoxItem etat = (ComboBoxItem)Pracownikletat.SelectedItem;
             ComboBoxItem Plec = (ComboBoxItem)PracowniklPlec.SelectedItem;
 
@@ -372,35 +379,149 @@ namespace sekretariat_szkoly
             P2Nazwisko = Pracownik2Nazwisko.Text;
             Pmatka = PracownikMatka.Text;
             POjciec = PracownikOjciec.Text;
-            PData = Pracownik_urodzenie.SelectedDate.Value.Date.ToShortDateString();
             PPesel = PracownikPesel.Text;
+            POpis = PracownikOpis.Text;
             PPlec = Plec.Content.ToString();
             PEtat = etat.Content.ToString();
-            POpis = PracownikOpis.Text;
-            PPDataZatr = Pracownikzatr.SelectedDate.Value.Date.ToShortDateString();
-
-            var rowGroup = table3.RowGroups.FirstOrDefault();
-            if (rowGroup != null)
+            /*
+             ____  ____  ____   __   _  _  ____  ____   __   __ _   __   ____        ____   __   ____  ____   __   _  _  __ _   __   ____   ___   __  
+            / ___)(  _ \(  _ \ / _\ / )( \(    \(__  ) / _\ (  ( \ (  ) (  __)      (  _ \ /  \ (  _ \(  _ \ / _\ / )( \(  ( \ /  \ / ___) / __) (  ) 
+            \___ \ ) __/ )   //    \\ /\ / ) D ( / _/ /    \/    /  )(   ) _)        ) __/(  O ) ) __/ )   //    \\ /\ //    /(  O )\___ \( (__   )(  
+            (____/(__)  (__\_)\_/\_/(_/\_)(____/(____)\_/\_/\_)__) (__) (____)      (__)   \__/ (__)  (__\_)\_/\_/(_/\_)\_)__) \__/ (____/ \___) (__) 
+             */
+            bool isNumber = int.TryParse(PPesel, out number);
+            if (isNumber)
             {
-                TableRow row = new TableRow();
-                dodanierekordu(PImie, row);
-                dodanierekordu(P2Imie, row);
-                dodanierekordu(PNazwisko, row);
-                dodanierekordu(P2Nazwisko, row);
-                dodanierekordu(Pmatka, row);
-                dodanierekordu(POjciec, row);
-                dodanierekordu(PData, row);
-                dodanierekordu(PPesel, row);
-                dodanierekordu(PPlec, row);
-                dodanierekordu(PEtat, row);
-                dodanierekordu(POpis, row);
-                dodanierekordu(PPDataZatr, row);
-                TableCell cell = new TableCell();
-                cell.Blocks.Add(ZdjeciePracownika);
-                row.Cells.Add(cell);
-                rowGroup.Rows.Add(row);
+                gitpesel = true;
+            }
+            else
+            {
+                MessageBox.Show("nieprawidlowy pesel");
+                gitpesel = false;
             }
 
+            char[] char_imie = PImie.ToCharArray();
+            bool isString = char_imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(PImie))
+            {
+                MessageBox.Show("nieprawidlowe imie");
+                git_imie = false;
+            }
+            else
+            {
+                git_imie = true;
+            }
+            char[] char_2imie = P2Imie.ToCharArray();
+            isString = char_2imie.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(P2Imie))
+            {
+                MessageBox.Show("nieprawidlowe drugie imie");
+                git2imie = false;
+            }
+            else
+            {
+                git2imie = true;
+            }
+            char[] nazwisko = PNazwisko.ToCharArray();
+            isString = nazwisko.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(PNazwisko))
+            {
+                MessageBox.Show("nieprawidlowe nazwisko");
+                gitnazwisko = false;
+            }
+            else
+            {
+                gitnazwisko = true;
+            }
+            char[] P2nazwisko = P2Nazwisko.ToCharArray();
+            isString = P2nazwisko.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(P2Nazwisko))
+            {
+                MessageBox.Show("nieprawidlowe nazwisko panieńskie");
+                git2nazwisko = false;
+            }
+            else
+            {
+                git2nazwisko = true;
+            }
+            char[] matka = Pmatka.ToCharArray();
+            isString = matka.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(Pmatka))
+            {
+                MessageBox.Show("nieprawidlowe imie matki");
+                gitmatka = false;
+            }
+            else
+            {
+                gitmatka = true;
+            }
+            char[] ojciec = POjciec.ToCharArray();
+            isString = ojciec.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(POjciec))
+            {
+                MessageBox.Show("nieprawidlowe imie ojca");
+                gitojciec = false;
+            }
+            else
+            {
+                gitojciec = true;
+            }
+            char[] opis = POpis.ToCharArray();
+            isString = opis.Any(char.IsDigit);
+            if (isString || String.IsNullOrEmpty(POpis))
+            {
+                MessageBox.Show("nieprawidlowy opis");
+                gitopis = false;
+            }
+            else
+            {
+                gitopis = true;
+            }
+            if (Pracownik_urodzenie.SelectedDate == null || Pracownikzatr.SelectedDate == null)
+            {
+                gitdaty = false;
+                MessageBox.Show("wybierz poprawnie daty!");
+            }
+            else
+            {
+                gitdaty = true;
+                PData = Pracownik_urodzenie.SelectedDate.Value.Date.ToShortDateString();
+                PPDataZatr = Pracownikzatr.SelectedDate.Value.Date.ToShortDateString();
+
+                if (git_imie && git2imie && gitnazwisko && git2nazwisko && gitmatka && gitojciec && gitpesel && gitopis && gitdaty)
+                {
+                    /*
+                         ____   __   ____   __   __ _   __   ____        ____  ____  __ _   __   ____  ____  _  _        ____   __   ____  ____  __     __  
+                        (    \ /  \ (    \ / _\ (  ( \ (  ) (  __)      (  _ \(  __)(  / ) /  \ (  _ \(    \/ )( \      (_  _) / _\ (  _ \(  __)(  )   (  ) 
+                         ) D ((  O ) ) D (/    \/    /  )(   ) _)        )   / ) _)  )  ( (  O ) )   / ) D () \/ (        )(  /    \ ) _ ( ) _) / (_/\  )(  
+                        (____/ \__/ (____/\_/\_/\_)__) (__) (____)      (__\_)(____)(__\_) \__/ (__\_)(____/\____/       (__) \_/\_/(____/(____)\____/ (__) 
+                     */
+                    var rowGroup = table3.RowGroups.FirstOrDefault();
+                    if (rowGroup != null)
+                    {
+                        TableRow row = new TableRow();
+                        dodanierekordu(PImie, row);
+                        dodanierekordu(P2Imie, row);
+                        dodanierekordu(PNazwisko, row);
+                        dodanierekordu(P2Nazwisko, row);
+                        dodanierekordu(Pmatka, row);
+                        dodanierekordu(POjciec, row);
+                        dodanierekordu(PData, row);
+                        dodanierekordu(PPesel, row);
+                        dodanierekordu(PPlec, row);
+                        dodanierekordu(PEtat, row);
+                        dodanierekordu(POpis, row);
+                        dodanierekordu(PPDataZatr, row);
+                        if (ZdjeciePracownika != null)
+                        {
+                            TableCell cell = new TableCell();
+                            cell.Blocks.Add(ZdjeciePracownika);
+                            row.Cells.Add(cell);
+                        }
+                        rowGroup.Rows.Add(row);
+                    }
+                }
+            }
         }
         /*
              ____  ____  ____  ____  ____  _  _  __     __   __ _   __   ____        ____  ____    __  ____   ___ 
